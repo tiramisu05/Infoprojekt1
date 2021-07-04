@@ -21,19 +21,19 @@ import javax.swing.JLabel;
  *
  * @author Meike
  */
-public class erstesFenster extends JFrame {
+public class erstesFensterGUI extends JFrame {
     
-    public erstesFenster(){
+    public erstesFensterGUI(){
         super("wir wollen keinen Fenstertitel, shit");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel label = new JLabel("Wer wird Bionik-Bachelor :-)");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JLabel label = new JLabel("Wer wird Bionik-Bachelor? :-)");
         add(label);
-        setSize(1500, 7500);
+        setSize(1200, 500);
         setVisible(true);
     }
     
     public static void main(String[] args) {
-        new erstesFenster();
+        new erstesFensterGUI();
     }
    
 }
