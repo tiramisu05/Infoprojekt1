@@ -8,11 +8,15 @@ package Lernprogramm.GUI;
 import Lernprogramm.Logik.Fragenliste;
 import Lernprogramm.Logik.Programm;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,6 +35,8 @@ public class ProgrammGUI extends JFrame{
     private int aktuelleNummer = -1; //Herr Knorr hatte hier für jede Adresskarte einen Index der durchgeklickt wurde,
     //wie funktioniert das wenn die Fragen randomisiert durchgegangen werden
     private JLabel punkte;
+    
+    private JButton a2;
     
     public ProgrammGUI(Programm programm, Fragenliste liste){
         super("Wer wird Bionik-Bachelor?");
@@ -81,7 +87,7 @@ public class ProgrammGUI extends JFrame{
         JButton a2 = new JButton();
         
         JButton a3 = new JButton();
-        
+        a3.setBackground(Color.GREEN);
         JButton a4 = new JButton();
         
         antworten.add(a1);
@@ -103,9 +109,37 @@ public class ProgrammGUI extends JFrame{
     
     private void showNextQuestion() {
         //hat man eine Antwort ausgewählt soll die nächste Frage angezeigt werden
-        //ein Punktestad an der Seite soll zB 3/10 ((richtig/fragenanzahl)) Punkte anzeigen
-        //if("Frage ist richtig){richtig++;  nächste Frage;  updateView()}
-        //else if("Frage ist falsch"){nächste Frage;  updateView()}
+        //if("Antwort ist richtig){
+        //richtig++;  
+        //a2.setBackground(Color.GREEN);
+        //nächste Frage;
+        //updateView();
+    
+        //else if("Frage ist falsch"){
+        //falseAnswer();
+        //nächste Frage;
+        //
+        //updateView()}
         
     }
-}
+    
+    private void falseAnswer(){
+        a2.setBackground(Color.RED);
+        openAnswer();
+        a2.setBackGround(Color.GRAY);
+    }
+
+    private JDialog openAnswer(JDialog antwort){
+        antwort = new JDialog();
+        JLabel richtigeA = new JLabel();
+        antwort.add(richtigeA);
+        
+        JButton zurück = new JButton();
+        zurück.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                antwort.dispose();
+            }
+    });
+        
+        antwort.add()
+    }
