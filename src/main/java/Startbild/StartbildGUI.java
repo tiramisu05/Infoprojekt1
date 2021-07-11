@@ -1,4 +1,4 @@
-package Test;
+package Startbild;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -40,6 +40,7 @@ public StartbildGUI(){      //Unterklasse
         
         
         add(titel, BorderLayout.NORTH);
+//        titel.setSize(40, 40);
         add(start, BorderLayout.SOUTH);
         
 //        logo.addActionListener(new ActionListener(){
