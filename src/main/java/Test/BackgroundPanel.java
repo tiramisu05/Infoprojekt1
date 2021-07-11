@@ -1,4 +1,4 @@
-package Lernprogramm.GUI;
+package Test;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -37,7 +37,6 @@ class BackgroundPanel extends JPanel {
         
 	@Override
 	protected void paintComponent(Graphics g) {
-		
 		super.paintComponent(g);
 		g.drawImage(img, 0, 0, this);
         }
