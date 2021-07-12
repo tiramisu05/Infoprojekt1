@@ -34,28 +34,27 @@ public class StartbildGUI extends JFrame {
     
 public StartbildGUI(){      //Unterklasse
         super("Startbild");
-        setSize(900, 500);
+        setSize(500, 250);
         setLayout(new BorderLayout());
         
         
-        
+        add(backgroundPanel);
+        setSize(backgroundPanel.getBackgroundImage().getWidth(backgroundPanel), backgroundPanel.getBackgroundImage().getHeight(backgroundPanel));
         add(titel, BorderLayout.NORTH);
-//        titel.setSize(40, 40);
         add(start, BorderLayout.SOUTH);
         
-//        logo.addActionListener(new ActionListener(){
-//            public void actionPerformed(ActionEvent e) {
-//                showFrame();
-//            }
-//
-//    private void showProgram() {
-//               
-//            }
-//
-//    
-//        });
-        add(backgroundPanel, BorderLayout.CENTER);
-        setSize(backgroundPanel.getBackgroundImage().getWidth(backgroundPanel), backgroundPanel.getBackgroundImage().getHeight(backgroundPanel));
+        logo.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                showFrame();
+            }
+
+    private void showProgram() {
+               
+            }
+
+    
+        });
+       
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
