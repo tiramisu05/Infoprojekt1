@@ -8,14 +8,11 @@ package Startbild;
 
 //irgendwelche hilfreichen Packages von Java
 
-import Lernprogramm.GUI.ProgrammGUI;
-import Lernprogramm.Logik.Fragenliste;
-import Lernprogramm.Logik.Logik;
 import Lernprogramm.Logik.Programm;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Panel;
+import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -32,28 +29,25 @@ import javax.swing.SwingConstants;
  */
 public class StartbildGUI extends JFrame {
     
-    private StartbildGUI start = new StartbildGUI();
+    private BackgroundPanel backgroundPanel = new BackgroundPanel();
     private JPanel control = new JPanel(new BorderLayout());
     private JLabel titel = new JLabel("Wer wird Bionik-Bachelor?", SwingConstants.CENTER);
     private JButton startbut = new JButton("Start");
-    private BackgroundPanel backgroundPanel = new BackgroundPanel();
-    
-    private Programm programm;
-//    private Logik logik;
-    private Fragenliste liste;
+        
     
 public StartbildGUI(){      //Unterklasse
         super("Startbild");
+        setSize(600, 400);
         setLayout(new BorderLayout());
-        
-        
-        getContentPane().add(backgroundPanel);
-        pack();
+                
+       
+                
+        add(backgroundPanel, BorderLayout.CENTER);
         setSize(backgroundPanel.getBackgroundImage().getWidth(backgroundPanel), backgroundPanel.getBackgroundImage().getWidth(backgroundPanel));
         
         titel.setFont(new Font( "Castellar", Font.PLAIN, 26));
         add(titel, BorderLayout.NORTH);
-        titel.setBackground(Color.WHITE);
+        titel.setBackground(Color.BLUE);
         
         add(startbut, BorderLayout.SOUTH);
         startbut.setFont(new Font( "Arial", Font.PLAIN, 20));
@@ -63,7 +57,6 @@ public StartbildGUI(){      //Unterklasse
             }
             });     
 
-       
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -71,12 +64,15 @@ public StartbildGUI(){      //Unterklasse
     }
 
 public void starte(){
-        new Logik();
-      //  ProgrammGUI programmGUI = new ProgrammGUI(programm, liste);
+        new Programm();
         
         //vom Startbutton aus die Logik und GUI starten plus die Liste erstellen
         //krieg ich noch nicht
-
-        start.dispose();
+        dispose();
 }
+        
+        
+    public static void main(String[] args) {
+        new StartbildGUI();
+    }
 }
