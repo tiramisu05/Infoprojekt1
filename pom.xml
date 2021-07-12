@@ -20,7 +20,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>Lernprogramm.GUI.StartbildGUI</mainClass>
+                            <mainClass>Startbild.StartbildGUI</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
