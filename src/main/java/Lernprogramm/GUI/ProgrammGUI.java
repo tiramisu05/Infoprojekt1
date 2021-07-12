@@ -6,7 +6,7 @@
 package Lernprogramm.GUI;
 
 import Lernprogramm.Logik.Fragenliste;
-import Lernprogramm.Logik.Programm;
+import Lernprogramm.Logik.Logik;
 import Startbild.StartbildGUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -30,10 +31,8 @@ import javax.swing.JPanel;
 
 public class ProgrammGUI extends JFrame{
     
-    private StartbildGUI startFrame = new StartbildGUI();
-    private Programm pprogramm;
-    private Fragenliste Liste;
-    //private //ein Äquivalent zu AddressForm??? Wat soll dat?
+    private Logik logik;
+    private Fragenliste lliste;
     private int aktuelleNummer = -1; //Herr Knorr hatte hier für jede Adresskarte einen Index der durchgeklickt wurde,
     //wie funktioniert das wenn die Fragen randomisiert durchgegangen werden
     private JLabel punkte;
@@ -44,25 +43,25 @@ public class ProgrammGUI extends JFrame{
     private JButton a4;
     
     
-    public ProgrammGUI(Programm programm, Fragenliste liste){
+    public ProgrammGUI(Logik logikinUI, Fragenliste liste){
         super("Wer wird Bionik-Bachelor?");
         setSize(800, 600);
         setLayout(new BorderLayout());
         
-        if(programm == null) {
+        if(logikinUI == null) {
             throw new NullPointerException("Programm darf nicht 'null' sein");
         }
         if(liste == null) {
             throw new NullPointerException("Liste darf nicht 'null' sein");
         }
         
-        pprogramm = programm;
-        Liste = liste;
+        logik = logikinUI;
+        lliste = liste;
         
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                pprogramm.schließen();
+                logik.schließen();
             }
         });
         
@@ -81,7 +80,7 @@ public class ProgrammGUI extends JFrame{
         JButton botanik = new JButton("Botanik");
         fächerPanel.add(botanik);
         
-        JLabel frage = new JLabel("Hier steht die Frage");
+        JLabel frage = new JLabel("Hier steht die Frage", SwingConstants.CENTER);
         content.add(frage);
         
         JPanel antworten = new JPanel();
@@ -130,6 +129,7 @@ public class ProgrammGUI extends JFrame{
         setVisible(true);
     }
     
+    
     //private void showNextQuestion() {
         //hat man eine Antwort ausgewählt soll die nächste Frage angezeigt werden
         //if("Antwort ist richtig"){
@@ -154,4 +154,5 @@ public class ProgrammGUI extends JFrame{
 
 //    }
       
+    
     }
