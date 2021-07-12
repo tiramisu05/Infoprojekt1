@@ -36,11 +36,15 @@ public class ProgrammGUI extends JFrame{
     //wie funktioniert das wenn die Fragen randomisiert durchgegangen werden
     private JLabel punkte;
     
+    private JButton a1;
     private JButton a2;
+    private JButton a3;
+    private JButton a4;
+    
     
     public ProgrammGUI(Programm programm, Fragenliste liste){
         super("Wer wird Bionik-Bachelor?");
-        setSize(800, 400);
+        setSize(1200, 600);
         setLayout(new BorderLayout());
         
         if(programm == null) {
@@ -82,13 +86,29 @@ public class ProgrammGUI extends JFrame{
         antworten.setLayout(new GridLayout(2, 2));
         content.add(antworten);
         
-        JButton a1 = new JButton();
+        a1 = new JButton();
+        a1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ;
+            }
         
-        JButton a2 = new JButton();
+        a2 = new JButton();
+        a2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ;
+            }
         
-        JButton a3 = new JButton();
-        a3.setBackground(Color.GREEN);
-        JButton a4 = new JButton();
+        a3 = new JButton();
+        a3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ;
+            }
+    
+        a4 = new JButton();
+        a4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ;
+            }
         
         antworten.add(a1);
         antworten.add(a2);
@@ -112,6 +132,7 @@ public class ProgrammGUI extends JFrame{
         //if("Antwort ist richtig){
         //richtig++;  
         //a2.setBackground(Color.GREEN);
+        //hier fehlt ein Timer für wenige Sekunden bis Button wieder GRAY
         //nächste Frage;
         //updateView();
     
@@ -123,23 +144,23 @@ public class ProgrammGUI extends JFrame{
         
     }
     
-    private void falseAnswer(){
-        a2.setBackground(Color.RED);
-        openAnswer();
-        a2.setBackGround(Color.GRAY);
-    }
-
-    private JDialog openAnswer(JDialog antwort){
-        antwort = new JDialog();
-        JLabel richtigeA = new JLabel();
-        antwort.add(richtigeA);
-        
-        JButton zurück = new JButton();
-        zurück.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                antwort.dispose();
-            }
-    });
-        
-        antwort.add()
+//    private void falseAnswer(){
+//        a2.setBackground(Color.RED);
+//        openAnswer();
+//        a2.setBackGround(Color.GRAY);
+//    }
+//
+//    private JDialog openAnswer(JDialog antwort){
+//        antwort = new JDialog();
+//        JLabel richtigeA = new JLabel();
+//        antwort.add(richtigeA);
+//        
+//        JButton zurück = new JButton();
+//        zurück.addActionListener(new ActionListener(){
+//            public void actionPerformed(ActionEvent e){
+//                antwort.dispose();
+//            }
+//    });
+//        
+//        antwort.add()
     }
