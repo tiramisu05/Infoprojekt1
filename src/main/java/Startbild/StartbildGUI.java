@@ -8,8 +8,12 @@ package Startbild;
 
 //irgendwelche hilfreichen Packages von Java
 
+import Lernprogramm.GUI.ProgrammGUI;
+import Lernprogramm.Logik.Fragenliste;
+import Lernprogramm.Logik.Logik;
 import Lernprogramm.Logik.Programm;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
@@ -28,10 +32,15 @@ import javax.swing.SwingConstants;
  */
 public class StartbildGUI extends JFrame {
     
-    JPanel control = new JPanel(new BorderLayout());
-    JLabel titel = new JLabel("Wer wird Bionik-Bachelor?", SwingConstants.CENTER);
-    JButton startbut = new JButton("Start");
-    BackgroundPanel backgroundPanel = new BackgroundPanel();
+    private StartbildGUI start = new StartbildGUI();
+    private JPanel control = new JPanel(new BorderLayout());
+    private JLabel titel = new JLabel("Wer wird Bionik-Bachelor?", SwingConstants.CENTER);
+    private JButton startbut = new JButton("Start");
+    private BackgroundPanel backgroundPanel = new BackgroundPanel();
+    
+    private Programm programm;
+//    private Logik logik;
+    private Fragenliste liste;
     
 public StartbildGUI(){      //Unterklasse
         super("Startbild");
@@ -41,14 +50,16 @@ public StartbildGUI(){      //Unterklasse
         getContentPane().add(backgroundPanel);
         pack();
         setSize(backgroundPanel.getBackgroundImage().getWidth(backgroundPanel), backgroundPanel.getBackgroundImage().getWidth(backgroundPanel));
-        titel.setFont(new Font( "Times New Roman", Font.BOLD, 26));
-        add(titel, BorderLayout.NORTH);
-        add(startbut, BorderLayout.SOUTH);
         
+        titel.setFont(new Font( "Castellar", Font.PLAIN, 26));
+        add(titel, BorderLayout.NORTH);
+        titel.setBackground(Color.WHITE);
+        
+        add(startbut, BorderLayout.SOUTH);
+        startbut.setFont(new Font( "Arial", Font.PLAIN, 20));
         startbut.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                new Programm();
-                dispose();
+                starte();
             }
             });     
 
@@ -59,8 +70,13 @@ public StartbildGUI(){      //Unterklasse
         
     }
 
-    public static void main(String[] args) {
-        new StartbildGUI();
-    }
+public void starte(){
+        new Logik();
+      //  ProgrammGUI programmGUI = new ProgrammGUI(programm, liste);
+        
+        //vom Startbutton aus die Logik und GUI starten plus die Liste erstellen
+        //krieg ich noch nicht
 
+        start.dispose();
+}
 }
