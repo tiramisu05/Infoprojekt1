@@ -2,7 +2,7 @@
 package Lernprogramm.Logik;
 
 import Lernprogramm.GUI.ProgrammGUI;
-
+import Startbild.StartbildGUI;
 /**
  *
  * @author Meike
@@ -10,6 +10,7 @@ import Lernprogramm.GUI.ProgrammGUI;
 
 public class Programm { //Äquivalent zu class Addressbook
     
+    private StartbildGUI start;
     private Fragenliste Liste = new Fragenliste();
     private ProgrammGUI pprogrammGUI;
     
@@ -25,7 +26,4 @@ public class Programm { //Äquivalent zu class Addressbook
         pprogrammGUI.dispose();
     }
     
-    public static void main(String[] args) {
-        new Programm();
-    }
 }
