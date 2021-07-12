@@ -1,26 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Lernprogramm.Logik;
 
 import Lernprogramm.GUI.ProgrammGUI;
-import Startbild.StartbildGUI;
 
 /**
  *
  * @author Meike
  */
-public class Programm {
-       private StartbildGUI start;
-            
-    public Programm(){
-        start = new StartbildGUI();
 
+public class Programm { //Äquivalent zu class Addressbook
+
+    private Fragenliste liste = new Fragenliste();
+    private ProgrammGUI pprogrammGUI;
+
+    public Programm() {
+//
+//        liste.add(new FrageAntworten(//hier müssen vier Stings abgerufen werden
+//        ));
+//        //hier wird eine Frage aus der Tabelle importiert
+//        //das soll immer wieder passieren
+//        //
+//        //bei Knorr wurden hier immer einzeln Addresskarten angelegt
+//        //mit je zwei Strings
+
+        pprogrammGUI = new ProgrammGUI(this, liste);
     }
-    
-    public static void main(String[] args) {
-        new Programm();
+
+    public void schließen() {
+        pprogrammGUI.dispose();
     }
+
 }
