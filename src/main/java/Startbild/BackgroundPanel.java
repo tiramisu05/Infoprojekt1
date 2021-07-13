@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 
 class BackgroundPanel extends JPanel {
         
-        private static final long serialVersionUID = 1L;
+//        private static final long serialVersionUID = 1L;
 	private Image img;
 
 	public BackgroundPanel() {

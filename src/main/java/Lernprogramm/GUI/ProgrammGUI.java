@@ -9,6 +9,7 @@ import Lernprogramm.Logik.Fragenliste;
 import Lernprogramm.Logik.Programm;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,10 +17,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -30,21 +31,25 @@ import javax.swing.JPanel;
 public class ProgrammGUI extends JFrame{
     
     private Programm pprogramm;
-    private Fragenliste Liste;
-    //private //ein Äquivalent zu AddressForm??? Wat soll dat?
-    private int aktuelleNummer = -1; //Herr Knorr hatte hier für jede Adresskarte einen Index der durchgeklickt wurde,
-    //wie funktioniert das wenn die Fragen randomisiert durchgegangen werden
-    private JLabel punkte;
-    
+    private Fragenliste lliste;
+    //Addressform? Wat soll dat?
+    private int aktuelleNummer = -1; 
+    //Herr Knorr hatte hier für jede Adresskarte einen Index
+    //der durchgeklickt wurde, wie funktioniert
+    //das wenn die Fragen randomisiert durchgegangen werden??
     private JButton a1;
     private JButton a2;
     private JButton a3;
     private JButton a4;
     
+    private JLabel punkte;
+    private int richtig = 0;
+    final int fragenanzahl = 10;
+    
     
     public ProgrammGUI(Programm programm, Fragenliste liste){
         super("Wer wird Bionik-Bachelor?");
-        setSize(1200, 600);
+        setSize(800, 600);
         setLayout(new BorderLayout());
         
         if(programm == null) {
@@ -55,7 +60,7 @@ public class ProgrammGUI extends JFrame{
         }
         
         pprogramm = programm;
-        Liste = liste;
+        lliste = liste;
         
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -79,47 +84,45 @@ public class ProgrammGUI extends JFrame{
         JButton botanik = new JButton("Botanik");
         fächerPanel.add(botanik);
         
-        JLabel frage = new JLabel();
+        JLabel frage = new JLabel("Hier steht die Frage", SwingConstants.CENTER);
         content.add(frage);
         
         JPanel antworten = new JPanel();
         antworten.setLayout(new GridLayout(2, 2));
         content.add(antworten);
         
-        a1 = new JButton();
-        a1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ;
-            }
+        a1 = new JButton("Antwort 1");
+//        a1.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                showNextQuestion();
+//            }
         
-        a2 = new JButton();
-        a2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ;
-            }
+        a2 = new JButton("Antwort 2");
+//        a2.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                showNextQuestion();
+//            }
         
-        a3 = new JButton();
-        a3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ;
-            }
+        a3 = new JButton("Antwort 3");
+//        a3.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                showNextQuestion();
+//            }
     
-        a4 = new JButton();
-        a4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ;
-            }
+        a4 = new JButton("Antwort 4");
+//        a4.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                showNextQuestion();
+//            }
         
         antworten.add(a1);
         antworten.add(a2);
         antworten.add(a3);
         antworten.add(a4);
         
-        int richtig = 0;
-        int fragenanzahl = 10;
-        
         punkte = new JLabel(richtig + " / " + fragenanzahl + " P.");
-        overcontent.add(punkte, BorderLayout.EAST);
+        punkte.setFont(new Font( "Castellar", Font.BOLD, 20));
+        content.add(punkte);
         
         
         
@@ -127,40 +130,42 @@ public class ProgrammGUI extends JFrame{
         setVisible(true);
     }
     
+    
     private void showNextQuestion() {
         //hat man eine Antwort ausgewählt soll die nächste Frage angezeigt werden
-        //if("Antwort ist richtig){
-        //richtig++;  
-        //a2.setBackground(Color.GREEN);
+        if(true){
+        richtig++;  
+        a2.setBackground(Color.GREEN);
         //hier fehlt ein Timer für wenige Sekunden bis Button wieder GRAY
-        //nächste Frage;
-        //updateView();
+//        nächste Frage;
+//        updateView();
+        }
     
-        //else if("Frage ist falsch"){
-        //falseAnswer();
-        //nächste Frage;
-        //
-        //updateView()}
+//        else if("Frage ist falsch"){
+//        falseAnswer();
+//        nächste Frage;
+//        updateView()
+//                }
         
     }
     
-//    private void falseAnswer(){
-//        a2.setBackground(Color.RED);
-//        openAnswer();
-//        a2.setBackGround(Color.GRAY);
-//    }
-//
-//    private JDialog openAnswer(JDialog antwort){
-//        antwort = new JDialog();
-//        JLabel richtigeA = new JLabel();
-//        antwort.add(richtigeA);
-//        
-//        JButton zurück = new JButton();
-//        zurück.addActionListener(new ActionListener(){
-//            public void actionPerformed(ActionEvent e){
-//                antwort.dispose();
-//            }
-//    });
-//        
-//        antwort.add()
+    private void falseAnswer(){
+        //hier muss jeweils der Button mit der richtigen Antwort grün
+        //der mit der falschen Rot werden
+        //danach könnte wieder ein Timer kommen bis beide wieder
+        //GRAY gesetzt werden
+        a2.setBackground(Color.RED);
+        a3.setBackground(Color.GREEN);
+          
+
+    }
+      
+    private void updateView(){
+        //hier wird einprogrammiert was updateView machen soll
+        //bei Knorr: fForm.set(fList.get(fCurrentIndex))
+        //bedeutet: fForm ist das Schreib und Anzeigefeld der Namen
+        //fList ist die Liste mit Namen
+        //fCurrentIndex ist der Index der aktuellen Addresskarte
+    }
+    
     }

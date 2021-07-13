@@ -1,4 +1,3 @@
-
 package Lernprogramm.Logik;
 
 import Lernprogramm.GUI.ProgrammGUI;
@@ -9,23 +8,25 @@ import Lernprogramm.GUI.ProgrammGUI;
  */
 
 public class Programm { //Äquivalent zu class Addressbook
-    
-    private Fragenliste Liste = new Fragenliste();
+
+    private Fragenliste liste = new Fragenliste();
     private ProgrammGUI pprogrammGUI;
-    
-    public Programm(){
-//        Liste.add(new FrageAntworten());
-        //hier wird eine Frage aus der Tabelle importiert
-        //das soll immer wieder passieren
-        
-        pprogrammGUI = new ProgrammGUI(this, Liste);
+
+    public Programm() {
+//
+//        liste.add(new FrageAntworten(//hier müssen vier Stings abgerufen werden
+//        ));
+//        //hier wird eine Frage aus der Tabelle importiert
+//        //das soll immer wieder passieren
+//        //
+//        //bei Knorr wurden hier immer einzeln Addresskarten angelegt
+//        //mit je zwei Strings
+
+        pprogrammGUI = new ProgrammGUI(this, liste);
     }
-    
+
     public void schließen() {
         pprogrammGUI.dispose();
     }
-    
-    public static void main(String[] args) {
-        new Programm();
-    }
+
 }
