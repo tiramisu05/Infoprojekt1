@@ -85,6 +85,7 @@ public class ProgrammGUI extends JFrame{
         fächerPanel.add(botanik);
         
         JLabel frage = new JLabel("Hier steht die Frage", SwingConstants.CENTER);
+        frage.setFont(new Font("Castellar", Font.PLAIN, 26));
         content.add(frage);
         
         JPanel antworten = new JPanel();
