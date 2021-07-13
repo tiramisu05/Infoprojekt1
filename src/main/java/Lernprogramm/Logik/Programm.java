@@ -1,6 +1,7 @@
 package Lernprogramm.Logik;
 
 import Lernprogramm.GUI.ProgrammGUI;
+import Lernprogramm.GUI.QuestionManager;
 
 /**
  *
@@ -22,7 +23,9 @@ public class Programm { //Äquivalent zu class Addressbook
 //        //bei Knorr wurden hier immer einzeln Addresskarten angelegt
 //        //mit je zwei Strings
 
-        pprogrammGUI = new ProgrammGUI(this, liste);
+        
+        QuestionManager qManager = new QuestionManager();
+        pprogrammGUI = new ProgrammGUI(this, qManager);
     }
 
     public void schließen() {

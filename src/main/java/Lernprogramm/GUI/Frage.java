@@ -2,6 +2,7 @@ package Lernprogramm.GUI;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,7 +29,19 @@ public class Frage {
         for (int i = 1; i < fullQuestion.length; i++) {
             _antworten.add(fullQuestion[i]);
         }
+        Collections.shuffle(_antworten); //Antworten in zufälliger reihenfolge
+
     }
+
+
+    public boolean isCorrectAnswer(String answer){
+        return answer.equalsIgnoreCase(_richtigeAntwort);
+    }
+
+    public List<String> getAnswers(){
+        return _antworten;
+    }
+
 
     public void PrintoutQuestion() {
         System.out.println("____________________________");
@@ -38,6 +51,11 @@ public class Frage {
             System.out.println("Antwort: "+it.next());
         }
 
+    }
+
+
+    public String getQuestion() {
+        return _fragestellung;
     }
 
 }
