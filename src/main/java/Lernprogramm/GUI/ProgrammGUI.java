@@ -132,14 +132,13 @@ public class ProgrammGUI extends JFrame{
     
     
     private void showNextQuestion() {
-        //hat man eine Antwort ausgewählt soll die nächste Frage angezeigt werden
-        if(true){
-        richtig++;  
-        a2.setBackground(Color.GREEN);
-        //hier fehlt ein Timer für wenige Sekunden bis Button wieder GRAY
-//        nächste Frage;
-//        updateView();
-        }
+//        //hat man eine Antwort ausgewählt soll die nächste Frage angezeigt werden
+//        if("Frage ist richtig"){
+//        richtig++;  
+//        richtigeAntwortButton.setBackground(Color.GREEN);
+////        nächste Frage;
+////        updateView();
+//       }
     
 //        else if("Frage ist falsch"){
 //        falseAnswer();
@@ -151,9 +150,6 @@ public class ProgrammGUI extends JFrame{
     
     private void falseAnswer(){
         //hier muss jeweils der Button mit der richtigen Antwort grün
-        //der mit der falschen Rot werden
-        //danach könnte wieder ein Timer kommen bis beide wieder
-        //GRAY gesetzt werden
         a2.setBackground(Color.RED);
         a3.setBackground(Color.GREEN);
           
@@ -161,6 +157,10 @@ public class ProgrammGUI extends JFrame{
     }
       
     private void updateView(){
+        a1.setBackground(Color.GRAY);;
+        a2.setBackground(Color.GRAY);
+        a3.setBackground(Color.GRAY);
+        a4.setBackground(Color.GRAY);
         //hier wird einprogrammiert was updateView machen soll
         //bei Knorr: fForm.set(fList.get(fCurrentIndex))
         //bedeutet: fForm ist das Schreib und Anzeigefeld der Namen
