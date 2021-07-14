@@ -33,11 +33,7 @@ public class ProgrammGUI extends JFrame {
 
     private Programm pprogramm;
     private QuestionManager _qManager;
-    // Addressform? Wat soll dat?
     private int _questionIndex = 0;
-    // Herr Knorr hatte hier für jede Adresskarte einen Index
-    // der durchgeklickt wurde, wie funktioniert
-    // das wenn die Fragen randomisiert durchgegangen werden??
     private JButton a1;
     private JButton a2;
     private JButton a3;
@@ -107,9 +103,9 @@ public class ProgrammGUI extends JFrame {
         JPanel frageP = new JPanel(new GridLayout(1, 1));
         content.add(frageP);
         
-        JLabel frage = new JLabel("Hier steht die Frage", SwingConstants.CENTER);
-        frage.setFont(new Font("Dubai", Font.PLAIN, 24));
-        frageP.add(frage);
+        _frageLabel = new JLabel("Hier steht die Frage", SwingConstants.CENTER);
+        _frageLabel.setFont(new Font("Dubai", Font.PLAIN, 24));
+        frageP.add(_frageLabel);
         
         JPanel antworten = new JPanel();
         antworten.setLayout(new GridLayout(2, 2));
@@ -192,13 +188,11 @@ public class ProgrammGUI extends JFrame {
         if (true) {
             a2.setBackground(Color.GREEN);
             // nächste Frage;
-            // updateView();
         }
 
         // else if("Frage ist falsch"){
         // falseAnswer();
         // nächste Frage;
-        // updateView()
         // }
 
     }
