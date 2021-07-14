@@ -50,7 +50,7 @@ public StartbildGUI(){      //Unterklasse
         titel.setBackground(Color.BLUE);
         
         add(startbut, BorderLayout.SOUTH);
-        startbut.setFont(new Font( "Arial", Font.PLAIN, 20));
+        startbut.setFont(new Font( "Dubai", Font.PLAIN, 20));
         startbut.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 starte();

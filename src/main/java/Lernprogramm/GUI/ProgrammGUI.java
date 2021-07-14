@@ -82,10 +82,23 @@ public class ProgrammGUI extends JFrame {
 
         JPanel fächerPanel = new JPanel();
         content.add(fächerPanel);
+        
         JButton chemie = new JButton("Chemie");
         fächerPanel.add(chemie);
+        chemie.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                ;//hier soll in die chemie Liste "geschaltet" werden
+            }
+    });
+        
         JButton botanik = new JButton("Botanik");
         fächerPanel.add(botanik);
+        botanik.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ;//hier soll in die botanik Liste "geschaltet" werden
+            }
+    });
+
 
         _frageLabel = new JLabel("Hier steht die Frage", SwingConstants.CENTER);
         content.add(_frageLabel);
@@ -146,9 +159,12 @@ public class ProgrammGUI extends JFrame {
 
         if (_qManager.getCurrentQuestion(_questionIndex).isCorrectAnswer(buttonText)) {
             System.out.println("CorrectAnswer!!");
+            richtig++;
             // TODO Counter counting usw...
+            //hier muss dem Button mit der richigen ANtwort die Farbe grün zugewiesen werden
         } else {
             System.out.println("Wrong Answer!!");
+            //hier wird falsche Antwort Button rot und richtige grün
 
         }
 
@@ -161,7 +177,6 @@ public class ProgrammGUI extends JFrame {
     private void showNextQuestion() {
         // hat man eine Antwort ausgewählt soll die nächste Frage angezeigt werden
         if (true) {
-            richtig++;
             a2.setBackground(Color.GREEN);
             // hier fehlt ein Timer für wenige Sekunden bis Button wieder GRAY
             // nächste Frage;
@@ -212,7 +227,14 @@ public class ProgrammGUI extends JFrame {
             a4.setText(answ.get(3));
 
             _frageLabel.setText(currFrage.getQuestion());
+            
+            
         }
+        
+            a1.setBackground(null);
+            a2.setBackground(null);
+            a3.setBackground(null);
+            a4.setBackground(null);
     }
 
 }
