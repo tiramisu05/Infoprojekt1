@@ -44,10 +44,10 @@ public class ProgrammGUI extends JFrame {
 
     private JLabel _frageLabel;
 
+    private JPanel süden;
     private JLabel punkte;
     private int richtig = 0;
-    final int fragenanzahl = 10;
-    
+    final int fragenanzahl = 10;    
     private JButton weiter;
 
     public ProgrammGUI(Programm programm, QuestionManager qManager) {
@@ -140,9 +140,13 @@ public class ProgrammGUI extends JFrame {
         antworten.add(a3);
         antworten.add(a4);
 
+        süden = new JPanel();
+        süden.setSize(this.getSize());
+        content.add(süden);
+        
         punkte = new JLabel(richtig + " / " + fragenanzahl + " P.");
         punkte.setFont(new Font("Castellar", Font.BOLD, 20));
-        content.add(punkte);
+        süden.add(punkte);
         
         weiter = new JButton("nächste Frage");
         weiter.addActionListener(new ActionListener() {
@@ -150,6 +154,7 @@ public class ProgrammGUI extends JFrame {
                 updateView();
             }
         });
+        süden.add(weiter);
         
         setLocationRelativeTo(null);
         setVisible(true);
@@ -170,7 +175,6 @@ public class ProgrammGUI extends JFrame {
 
         _qManager.getAndLoadNextQuestion();
 
-        updateView();
 
     }
 
