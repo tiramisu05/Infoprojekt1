@@ -5,7 +5,6 @@
  */
 package Lernprogramm.GUI;
 
-import Lernprogramm.Logik.Fragenliste;
 import Lernprogramm.Logik.Programm;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -48,6 +47,8 @@ public class ProgrammGUI extends JFrame {
     private JLabel punkte;
     private int richtig = 0;
     final int fragenanzahl = 10;
+    
+    private JButton weiter;
 
     public ProgrammGUI(Programm programm, QuestionManager qManager) {
         super("Wer wird Bionik-Bachelor?");
@@ -129,7 +130,14 @@ public class ProgrammGUI extends JFrame {
         punkte = new JLabel(richtig + " / " + fragenanzahl + " P.");
         punkte.setFont(new Font("Castellar", Font.BOLD, 20));
         content.add(punkte);
-
+        
+        weiter = new JButton("nächste Frage");
+        weiter.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                updateView();
+            }
+        });
+        
         setLocationRelativeTo(null);
         setVisible(true);
     }
