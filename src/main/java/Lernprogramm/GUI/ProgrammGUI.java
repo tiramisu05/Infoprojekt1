@@ -45,12 +45,12 @@ public class ProgrammGUI extends JFrame {
 
     private JLabel _frageLabel;
 
-    private JPanel süden;
     private JLabel punkte;
     private int richtig = 0;
     final int fragenanzahl = 10;    
     private JButton weiter;
-
+    private JPanel süden;
+    
     public ProgrammGUI(Programm programm, QuestionManager qManager) {
         super("Wer wird Bionik-Bachelor?");
         setSize(800, 600);
@@ -82,7 +82,7 @@ public class ProgrammGUI extends JFrame {
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
         JPanel fächerPanel = new JPanel();
-        content.add(fächerPanel);
+
         JButton chemie = new JButton("Chemie");
         chemie.setFont(new Font("Dubai", Font.PLAIN, 14));
         fächerPanel.add(chemie);
@@ -95,6 +95,13 @@ public class ProgrammGUI extends JFrame {
         JButton botanik = new JButton("Botanik");
         botanik.setFont(new Font("Dubai", Font.PLAIN, 14));
         fächerPanel.add(botanik);
+        botanik.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                ;//hier soll in die botanik Liste "geschaltet" werden
+            }
+    });
+        
+        
         content.add(fächerPanel);
         
         JPanel frageP = new JPanel(new GridLayout(1, 1));
@@ -142,7 +149,6 @@ public class ProgrammGUI extends JFrame {
         antworten.add(a4);
 
         süden = new JPanel();
-        süden.setSize(this.getSize());
         content.add(süden);
         
         punkte = new JLabel(richtig + " / " + fragenanzahl + " P.");
@@ -150,11 +156,11 @@ public class ProgrammGUI extends JFrame {
         süden.add(punkte);
         
         weiter = new JButton("nächste Frage");
-        weiter.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ;
-            }
-        });
+//        weiter.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                ;
+//            }
+//        });
         süden.add(weiter);
         
         setLocationRelativeTo(null);
@@ -230,10 +236,10 @@ public class ProgrammGUI extends JFrame {
             
         }
         
-//            a1.setBackground(null);
-//            a2.setBackground(null);
-//            a3.setBackground(null);
-//            a4.setBackground(null);
+            a1.setBackground(null);
+            a2.setBackground(null);
+            a3.setBackground(null);
+            a4.setBackground(null);
     }
 
 }
