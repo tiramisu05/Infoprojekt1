@@ -152,11 +152,11 @@ public class ProgrammGUI extends JFrame {
         süden.add(punkte);
         
         weiter = new JButton("nächste Frage");
-//        weiter.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                ;
-//            }
-//        });
+        weiter.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                updateView();
+            }
+        });
         süden.add(weiter);
         
         setLocationRelativeTo(null);
@@ -178,7 +178,7 @@ public class ProgrammGUI extends JFrame {
 
         _qManager.getAndLoadNextQuestion();
         
-        updateView();
+        //updateView();
 
 
     }
