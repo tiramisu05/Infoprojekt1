@@ -10,7 +10,6 @@ import Lernprogramm.GUI.QuestionManager;
 
 public class Programm { //Äquivalent zu class Addressbook
 
-    private Fragenliste liste = new Fragenliste();
     private ProgrammGUI pprogrammGUI;
 
     public Programm() {
