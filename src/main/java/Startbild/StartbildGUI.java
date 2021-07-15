@@ -15,6 +15,7 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame; //Top-Level-Container = unser Fenster
 import javax.swing.JLabel;
@@ -30,30 +31,34 @@ import javax.swing.SwingConstants;
 public class StartbildGUI extends JFrame {
     
     private BackgroundPanel backgroundPanel = new BackgroundPanel();
-    private JPanel control = new JPanel(new BorderLayout());
+//    private JPanel control = new JPanel();
     private JLabel titel = new JLabel("Wer wird Bionik-Bachelor?", SwingConstants.CENTER);
     private JButton startbut = new JButton("Start");
         
     
 public StartbildGUI(){      //Unterklasse
         super("Startbild");
-        setSize(600, 400);
+        setSize(500, 300);
         setLayout(new BorderLayout());
-                
-       
-                
-        add(backgroundPanel, BorderLayout.CENTER);
-        setSize(backgroundPanel.getBackgroundImage().getWidth(backgroundPanel), backgroundPanel.getBackgroundImage().getWidth(backgroundPanel));
         
         titel.setFont(new Font( "Castellar", Font.PLAIN, 26));
         add(titel, BorderLayout.NORTH);
         titel.setBackground(Color.BLUE);
         
+        add(backgroundPanel);
+        backgroundPanel.setAlignmentX(CENTER_ALIGNMENT);
+        setSize(backgroundPanel.getBackgroundImage().getWidth(backgroundPanel), backgroundPanel.getBackgroundImage().getWidth(backgroundPanel));
+        
+        
+        
+        
         add(startbut, BorderLayout.SOUTH);
-        startbut.setFont(new Font( "Arial", Font.PLAIN, 20));
+        startbut.setAlignmentX(CENTER_ALIGNMENT);
+        startbut.setFont(new Font( "Dubai", Font.PLAIN, 20));
         startbut.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                starte();
+                new Programm();
+                dispose();
             }
             });     
 
@@ -63,13 +68,13 @@ public StartbildGUI(){      //Unterklasse
         
     }
 
-public void starte(){
-        new Programm();
-        
-        //vom Startbutton aus die Logik und GUI starten plus die Liste erstellen
-        //krieg ich noch nicht
-        dispose();
-}
+//public void starte(){
+//        new Programm();
+//        
+//        //vom Startbutton aus die Logik und GUI starten plus die Liste erstellen
+//        //krieg ich noch nicht
+//        dispose();
+//}
         
         
     public static void main(String[] args) {
