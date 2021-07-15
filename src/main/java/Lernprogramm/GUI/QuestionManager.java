@@ -31,9 +31,7 @@ public class QuestionManager {
 
     private Frage _currentQuestion;
 
-    public static void main(String[] args) {
 
-    }
 
     public QuestionManager() {
         List<String[]> zeilenliste = readCSVDatei();
