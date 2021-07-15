@@ -38,19 +38,16 @@ public class StartbildGUI extends JFrame {
     
 public StartbildGUI(){      //Unterklasse
         super("Startbild");
-        setSize(500, 300);
+        setSize(750, 250);
         setLayout(new BorderLayout());
         
         titel.setFont(new Font( "Castellar", Font.PLAIN, 26));
         add(titel, BorderLayout.NORTH);
-        titel.setBackground(Color.BLUE);
+        titel.setBackground(Color.blue);
         
-        add(backgroundPanel);
+        add(backgroundPanel, BorderLayout.CENTER);
         backgroundPanel.setAlignmentX(CENTER_ALIGNMENT);
-        setSize(backgroundPanel.getBackgroundImage().getWidth(backgroundPanel), backgroundPanel.getBackgroundImage().getWidth(backgroundPanel));
-        
-        
-        
+        setSize(backgroundPanel.getBackgroundImage().getWidth(backgroundPanel)+15, 350);       
         
         add(startbut, BorderLayout.SOUTH);
         startbut.setAlignmentX(CENTER_ALIGNMENT);
@@ -61,20 +58,13 @@ public StartbildGUI(){      //Unterklasse
                 dispose();
             }
             });     
-
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         
     }
 
-//public void starte(){
-//        new Programm();
-//        
-//        //vom Startbutton aus die Logik und GUI starten plus die Liste erstellen
-//        //krieg ich noch nicht
-//        dispose();
-//}
         
         
     public static void main(String[] args) {
