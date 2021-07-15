@@ -133,9 +133,9 @@ public class ProgrammGUI extends JFrame {
         a2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buttonHandler(a2.getText());
-                if(true){
-                    a2.setBackground(Color.green);
-                    }//else{
+//                if(Frage richtig){
+//                    a2.setBackground(Color.green);
+//                    }//else{
 //                            a2.setBackground(Color.red);
 //                            (button mit der richtigen Antwort).setBackground(Color.green);
 //                            }
@@ -219,7 +219,6 @@ public class ProgrammGUI extends JFrame {
             // TODO Counter counting usw...
         } else {
             System.out.println("Wrong Answer!!");
-            //hier wird falsche Antwort Button rot und richtige grün
 
         }
 
