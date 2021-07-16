@@ -60,8 +60,6 @@ public class ProgrammGUI extends JFrame {
         //Mit super wird der JFrame aufgerufen und ein Titel gegeben.
         setSize(800, 600);
         //Dem JFrame wird eine festgelegte Größe zugewiesen.
-        setLayout(new BorderLayout());
-        //Der JFrame bekommt ein BorderLayout.
 
         if (programm == null) {
             throw new NullPointerException("Programm darf nicht 'null' sein");
@@ -82,9 +80,14 @@ public class ProgrammGUI extends JFrame {
         });
         //Wird dieser Frame per "x" geschlossen, wird das ganze Programm beendet.
 
-       
+       JPanel overcontent = new JPanel();
+        overcontent.setLayout(new BorderLayout());
+        add(overcontent);
+        //Das Panel "overcontent" stellt einen Container zur Anordnung des Inhalts in einem weiteren Panel
+        //im Bereich Center namens "content" dar.
+
         JPanel content = new JPanel();
-        add(content, BorderLayout.NORTH);
+        overcontent.add(content, BorderLayout.CENTER);
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         //Das Panel content beinhaltet alle Komponenten des Hauptfensters angeordnet in einem BoxLayout entang der Y-Achse.
 
