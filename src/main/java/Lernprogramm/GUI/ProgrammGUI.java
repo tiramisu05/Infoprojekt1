@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -26,41 +27,45 @@ import javax.swing.SwingConstants;
 
 /**
  *
- * @author Meike
+ * @author Meike/Arjun
  */
-
 public class ProgrammGUI extends JFrame {
 
     private Programm pprogramm;
     private QuestionManager _qManager;
+    private QuestionManager _qManagerInaktiv;
     private int _questionIndex = 0;
     private JButton a1;
     private JButton a2;
     private JButton a3;
     private JButton a4;
-
+    private List<JButton> _Buttonliste;
     private JLabel _frageLabel;
 
     private JLabel punkte;
     private int richtig = 0;
-    final int fragenanzahl = 10;    
+    final int fragenanzahl = 10;
     private JButton weiter;
     private JPanel sueden;
-    
-    public ProgrammGUI(Programm programm, QuestionManager qManager) {
+
+    public ProgrammGUI(Programm programm, QuestionManager qManagerBotanik, QuestionManager qManagerChemie) {
         super("Wer wird Bionik-Bachelor?");
         setSize(800, 600);
         setLayout(new BorderLayout());
 
+        _qManager = qManagerBotanik;
+        _qManagerInaktiv = qManagerChemie;
+
         if (programm == null) {
             throw new NullPointerException("Programm darf nicht 'null' sein");
         }
-        if (qManager == null) {
+        if (_qManager == null) {
             throw new NullPointerException("Liste darf nicht 'null' sein");
         }
 
+        _Buttonliste = new ArrayList<JButton>();
+
         pprogramm = programm;
-        _qManager = qManager;
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -80,33 +85,37 @@ public class ProgrammGUI extends JFrame {
         JPanel fächerPanel = new JPanel();
 
         JButton chemie = new JButton("Chemie");
+        JButton botanik = new JButton("Botanik");
         chemie.setFont(new Font("Dubai", Font.PLAIN, 14));
         fächerPanel.add(chemie);
-        chemie.addActionListener(new ActionListener(){
+        chemie.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ;//hier soll in die chemie Liste "geschaltet" werden
+                _qManager = qManagerChemie;
+                chemie.setBackground(Color.green);
+                botanik.setEnabled(false);
+
             }
-    });
-        
-        JButton botanik = new JButton("Botanik");
+        });
+
         botanik.setFont(new Font("Dubai", Font.PLAIN, 14));
         fächerPanel.add(botanik);
-        botanik.addActionListener(new ActionListener(){
+        botanik.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ;//hier soll in die botanik Liste "geschaltet" werden
+                _qManager = qManagerBotanik;
+                botanik.setBackground(Color.green);
+                chemie.setEnabled(false);
             }
-    });
-        
-        
+        });
+
         content.add(fächerPanel);
-        
+
         JPanel frageP = new JPanel(new GridLayout(1, 1));
         content.add(frageP);
-        
-        _frageLabel = new JLabel("Hier steht die Frage", SwingConstants.CENTER);
+
+        _frageLabel = new JLabel("Wähle die Kategorie aus um das Quiz zu starten", SwingConstants.CENTER);
         _frageLabel.setFont(new Font("Dubai", Font.PLAIN, 24));
         frageP.add(_frageLabel);
-        
+
         JPanel antworten = new JPanel();
         antworten.setLayout(new GridLayout(2, 2));
         content.add(antworten);
@@ -125,9 +134,12 @@ public class ProgrammGUI extends JFrame {
                 a2.setEnabled(false);
                 a3.setEnabled(false);
                 a4.setEnabled(false);
-                
+
             }
+
         });
+
+        _Buttonliste.add(a1);
 
         a2 = new JButton("Antwort 2");
         a2.addActionListener(new ActionListener() {
@@ -146,6 +158,8 @@ public class ProgrammGUI extends JFrame {
             }
         });
 
+        _Buttonliste.add(a2);
+
         a3 = new JButton("Antwort 3");
         a3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -162,6 +176,8 @@ public class ProgrammGUI extends JFrame {
                 a4.setEnabled(false);
             }
         });
+
+        _Buttonliste.add(a3);
 
         a4 = new JButton("Antwort 4");
         a4.addActionListener(new ActionListener() {
@@ -180,6 +196,8 @@ public class ProgrammGUI extends JFrame {
             }
         });
 
+        _Buttonliste.add(a4); //Add Button to Buttonlist
+
         antworten.add(a1);
         antworten.add(a2);
         antworten.add(a3);
@@ -187,48 +205,68 @@ public class ProgrammGUI extends JFrame {
 
         sueden = new JPanel();
         content.add(sueden);
-        
+
         punkte = new JLabel(richtig + " / " + fragenanzahl + " P.");
         punkte.setFont(new Font("Castellar", Font.BOLD, 20));
         sueden.add(punkte);
-        
+
         weiter = new JButton("nächste Frage");
         weiter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                updateView();
-                
                 a1.setEnabled(true);
                 a2.setEnabled(true);
                 a3.setEnabled(true);
                 a4.setEnabled(true);
-                
+
+                updateView();
+
                 punkte.setText(richtig + " / " + fragenanzahl + " P.");
             }
         });
         sueden.add(weiter);
-        
+
         setLocationRelativeTo(null);
         setVisible(true);
+
+        for (JButton button : _Buttonliste) {
+            button.setEnabled(false);
+        }
     }
 
     private void buttonHandler(String buttonText) {
 
-        if (_qManager.getCurrentQuestion(_questionIndex).isCorrectAnswer(buttonText)) {
+        if (_qManager.getCurrentQuestion().isCorrectAnswer(buttonText)) {
             System.out.println("CorrectAnswer!!");
-             richtig++;           
+
+            for (JButton buttons : _Buttonliste) {
+
+                if (buttons.getText().equalsIgnoreCase(buttonText)) {
+                    buttons.setBackground(Color.green);
+                }
+
+            }
+            richtig++;
             // TODO Counter counting usw...
         } else {
+            for (JButton button : _Buttonliste) {
+                if (button.getText().equalsIgnoreCase(buttonText)) {
+                    button.setBackground(Color.red);
+
+                }
+                if (_qManager.getCurrentQuestion().isCorrectAnswer(button.getText())) {
+                    button.setBackground(Color.green);
+
+                }
+
+            }
+
             System.out.println("Wrong Answer!!");
 
         }
 
         _qManager.getAndLoadNextQuestion();
-        
+
     }
-
-
-
-
 
     private void updateView() {
 
@@ -236,7 +274,11 @@ public class ProgrammGUI extends JFrame {
 
         if (currFrage == null) {
             System.out.println("Keine weiteren Fragen");
-            _frageLabel.setText("DONE.. No more Questions");
+            _frageLabel.setText("Du hast " + richtig + " von " + fragenanzahl + " Punkten erreicht.");
+            for (JButton button : _Buttonliste) {
+                button.setEnabled(false);
+
+            }
         } else {
 
             List<String> answ = currFrage.getAnswers();
@@ -251,14 +293,13 @@ public class ProgrammGUI extends JFrame {
             a4.setText(answ.get(3));
 
             _frageLabel.setText(currFrage.getQuestion());
-            
-            
+
         }
-        
-            a1.setBackground(null);
-            a2.setBackground(null);
-            a3.setBackground(null);
-            a4.setBackground(null);
+
+        a1.setBackground(null);
+        a2.setBackground(null);
+        a3.setBackground(null);
+        a4.setBackground(null);
     }
 
 }
