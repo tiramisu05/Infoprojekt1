@@ -45,7 +45,7 @@ public class ProgrammGUI extends JFrame {
     private int richtig = 0;
     final int fragenanzahl = 10;    
     private JButton weiter;
-    private JPanel süden;
+    private JPanel sueden;
     
     public ProgrammGUI(Programm programm, QuestionManager qManager) {
         super("Wer wird Bionik-Bachelor?");
@@ -115,6 +115,17 @@ public class ProgrammGUI extends JFrame {
         a1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buttonHandler(a1.getText());
+//                if(Frage richtig){
+//                    (button mit der richtigen Antwort).setBackground(Color.green);
+//                    }else{
+//                            a1.setBackground(Color.red);
+//                            (button mit der richtigen Antwort).setBackground(Color.green);
+//                            }
+                a1.setEnabled(false);
+                a2.setEnabled(false);
+                a3.setEnabled(false);
+                a4.setEnabled(false);
+                
             }
         });
 
@@ -122,6 +133,16 @@ public class ProgrammGUI extends JFrame {
         a2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buttonHandler(a2.getText());
+//                if(Frage richtig){
+//                    a2.setBackground(Color.green);
+//                    }//else{
+//                            a2.setBackground(Color.red);
+//                            (button mit der richtigen Antwort).setBackground(Color.green);
+//                            }
+                a1.setEnabled(false);
+                a2.setEnabled(false);
+                a3.setEnabled(false);
+                a4.setEnabled(false);
             }
         });
 
@@ -129,6 +150,16 @@ public class ProgrammGUI extends JFrame {
         a3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buttonHandler(a3.getText());
+//                if(Frage richtig){
+//                    (button mit der richtigen Antwort).setBackground(Color.green);
+//                    }else{
+//                            a3.setBackground(Color.red);
+//                            (button mit der richtigen Antwort).setBackground(Color.green);
+//                            }
+                a1.setEnabled(false);
+                a2.setEnabled(false);
+                a3.setEnabled(false);
+                a4.setEnabled(false);
             }
         });
 
@@ -136,6 +167,16 @@ public class ProgrammGUI extends JFrame {
         a4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buttonHandler(a4.getText());
+//                if(Frage richtig){
+//                    (button mit der richtigen Antwort).setBackground(Color.green);
+//                    }else{
+//                            a4.setBackground(Color.red);
+//                            (button mit der richtigen Antwort).setBackground(Color.green);
+//                            }
+                a1.setEnabled(false);
+                a2.setEnabled(false);
+                a3.setEnabled(false);
+                a4.setEnabled(false);
             }
         });
 
@@ -144,20 +185,27 @@ public class ProgrammGUI extends JFrame {
         antworten.add(a3);
         antworten.add(a4);
 
-        süden = new JPanel();
-        content.add(süden);
+        sueden = new JPanel();
+        content.add(sueden);
         
         punkte = new JLabel(richtig + " / " + fragenanzahl + " P.");
         punkte.setFont(new Font("Castellar", Font.BOLD, 20));
-        süden.add(punkte);
+        sueden.add(punkte);
         
         weiter = new JButton("nächste Frage");
         weiter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 updateView();
+                
+                a1.setEnabled(true);
+                a2.setEnabled(true);
+                a3.setEnabled(true);
+                a4.setEnabled(true);
+                
+                punkte.setText(richtig + " / " + fragenanzahl + " P.");
             }
         });
-        süden.add(weiter);
+        sueden.add(weiter);
         
         setLocationRelativeTo(null);
         setVisible(true);
@@ -167,43 +215,20 @@ public class ProgrammGUI extends JFrame {
 
         if (_qManager.getCurrentQuestion(_questionIndex).isCorrectAnswer(buttonText)) {
             System.out.println("CorrectAnswer!!");
-            richtig++;
+             richtig++;           
             // TODO Counter counting usw...
-            //hier muss dem Button mit der richigen ANtwort die Farbe grün zugewiesen werden
         } else {
             System.out.println("Wrong Answer!!");
-            //hier wird falsche Antwort Button rot und richtige grün
 
         }
 
         _qManager.getAndLoadNextQuestion();
         
-        //updateView();
-
-
     }
 
-    private void showNextQuestion() {
-        // hat man eine Antwort ausgewählt soll die nächste Frage angezeigt werden
-        if (true) {
-            a2.setBackground(Color.GREEN);
-            // nächste Frage;
-        }
 
-        // else if("Frage ist falsch"){
-        // falseAnswer();
-        // nächste Frage;
-        // }
 
-    }
 
-    private void falseAnswer() {
-        // hier muss jeweils der Button mit der richtigen Antwort grün
-        // der mit der falschen Rot werden
-        a2.setBackground(Color.RED);
-        a3.setBackground(Color.GREEN);
-
-    }
 
     private void updateView() {
 
