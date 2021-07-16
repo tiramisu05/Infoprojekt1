@@ -7,7 +7,6 @@ package Lernprogramm.GUI;
 
 import Lernprogramm.Logik.Programm;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -56,9 +55,9 @@ public class ProgrammGUI extends JFrame {
     //Im Panel sueden sind der Punktestand und der "weiter"-Button zusammengefasst.
     
     public ProgrammGUI(Programm programm, QuestionManager qManager) {
-        super("Wer wird Bionik-Bachelor?");
+        super("Wer wird Bioniker?");
         //Mit super wird der JFrame aufgerufen und ein Titel gegeben.
-        setSize(800, 600);
+        setSize(900, 600);
         //Dem JFrame wird eine festgelegte Größe zugewiesen.
 
         if (programm == null) {

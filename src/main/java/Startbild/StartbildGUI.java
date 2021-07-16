@@ -38,7 +38,7 @@ public class StartbildGUI extends JFrame {
     
     private BackgroundPanel backgroundPanel = new BackgroundPanel();
     //Das BackgrounPanel blendet das Titelbild ein.
-    private JLabel titel = new JLabel("Wer wird Bionik-Bachelor?", SwingConstants.CENTER);
+    private JLabel titel = new JLabel("Wer wird Bioniker?", SwingConstants.CENTER);
     //Das "titel"-Label enthält die Überschrift vom Startbildschirm.
     //Der String wird mittig im Label platziert.
     private JButton startbut = new JButton("Start");
